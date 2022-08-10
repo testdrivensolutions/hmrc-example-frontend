@@ -33,4 +33,5 @@ bin
 /*.ipr
 /.classpath
 *.iws
+/migrations
 /.bsp/sbt.json
