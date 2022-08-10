@@ -74,6 +74,7 @@ If you have successfully run through the pages of the app you should see the dat
 giter8 can be used to create some pages. To do that first navigate to the project directory in the terminal and enter
 <pre>sbt</pre>
 <pre>g8Scaffold yesNoPage</pre>
+<pre>exit</pre>
 For example if you want a new Yes No Page
 You’ll now be prompter for some data such as the className. These have default values
 
