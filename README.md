@@ -76,6 +76,12 @@ giter8 can be used to create some pages. To do that first navigate to the projec
 <pre>g8Scaffold yesNoPage</pre>
 For example if you want a new Yes No Page
 You’ll now be prompter for some data such as the className. These have default values
+
+Note: There's an issue where where giter8 will only display the last two characters you enter.
+To get around this you instead need to start sbt with a different editor.
+However I can't remember how to do that
+
+TODO: Look up the bettwe sbt command and edit this Readme
 <pre>./migrate.sh</pre>
 updates some of the files
 
