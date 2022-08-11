@@ -37,7 +37,10 @@ error.summary.title = There is a problem
 
 index.title = hmrc-example-frontend
 index.heading = hmrc-example-frontend
-index.guidance = Welcome to your new frontend. Please see the README file for a guide to getting started.
+index.guidance = This is a example HMRC frontend.
+
+index.linkText = To see some examples of pages that collect data click
+index.linkName = here
 
 checkYourAnswers.title = Check Your Answers
 checkYourAnswers.heading = Check Your Answers
@@ -55,3 +58,26 @@ signedOut.guidance = We did not save your answers.
 
 unauthorised.title = You can’t access this service with this account
 unauthorised.heading = You can’t access this service with this account
+
+name.title = Employees Name
+name.heading = Employees Name
+name.checkYourAnswersLabel = Employees name
+name.error.required = Enter employees name
+name.error.length = Employees name must be 20 characters or less
+name.change.hidden = employees name
+
+dateOfBirth.title = Date of birth
+dateOfBirth.heading = Date of birth
+dateOfBirth.hint = For example, 12 11 2007
+dateOfBirth.checkYourAnswersLabel = Date of birth
+dateOfBirth.error.required.all = Enter the date of birth
+dateOfBirth.error.required.two = The date of birth must include {0} and {1}
+dateOfBirth.error.required = The date of birth must include {0}
+dateOfBirth.error.invalid = Enter a real date of birth
+dateOfBirth.change.hidden = date of birth
+
+dateOfBirthYesNo.title = Do you know the employees date of birth
+dateOfBirthYesNo.heading = Do you know the employees date of birth
+dateOfBirthYesNo.checkYourAnswersLabel = Employees date of birth
+dateOfBirthYesNo.error.required = Select yes if you know the employees date of birth
+dateOfBirthYesNo.change.hidden = employees date of birth is known

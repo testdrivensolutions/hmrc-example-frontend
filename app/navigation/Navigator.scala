@@ -27,11 +27,15 @@ import models._
 class Navigator @Inject() () {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case _ => _ => routes.IndexController.onPageLoad
+    case NamePage             => _ => routes.DateOfBirthYesNoController.onPageLoad(NormalMode)
+    case DateOfBirthYesNoPage => ua => dateOfBirthYesNoRoute(NormalMode)(ua)
+    case DateOfBirthPage      => ua => routes.CheckYourAnswersController.onPageLoad
+    case _                    => _ => routes.IndexController.onPageLoad
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
-    case _ => _ => routes.CheckYourAnswersController.onPageLoad
+    case DateOfBirthYesNoPage => ua => dateOfBirthYesNoRoute(CheckMode)(ua)
+    case _                    => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
@@ -40,4 +44,11 @@ class Navigator @Inject() () {
     case CheckMode =>
       checkRouteMap(page)(userAnswers)
   }
+
+  private def dateOfBirthYesNoRoute(mode: Mode)(userAnswers: UserAnswers) =
+    userAnswers.get(DateOfBirthYesNoPage) match {
+      case Some(true)  => routes.DateOfBirthController.onPageLoad(mode)
+      case Some(false) => routes.CheckYourAnswersController.onPageLoad
+      case None        => routes.DateOfBirthYesNoController.onPageLoad(mode)
+    }
 }

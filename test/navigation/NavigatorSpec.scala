@@ -28,9 +28,28 @@ class NavigatorSpec extends SpecBase {
   "Navigator" - {
 
     "in Normal mode" - {
+      val mode = NormalMode
+      "must go from Name page to DateOfBirthYesNoPage" in {
+        navigator.nextPage(NamePage, mode, UserAnswers("id")) mustBe routes.DateOfBirthYesNoController.onPageLoad(mode)
+      }
+
+      "must go from DateOfBirthYesNoPage with an answer of true page to DateOfBirth" - {
+        "to DateOfBirth if we answered true" in {
+          val userAnswers = UserAnswers("id").set(DateOfBirthYesNoPage, true).get
+          navigator.nextPage(DateOfBirthYesNoPage, mode, userAnswers) mustBe routes.DateOfBirthController.onPageLoad(mode)
+        }
+
+        "to CheckYourAnswersPage if we answered false" in {
+          val userAnswers = UserAnswers("id").set(DateOfBirthYesNoPage, false).get
+          navigator.nextPage(DateOfBirthYesNoPage, mode, userAnswers) mustBe routes.CheckYourAnswersController.onPageLoad
+        }
+      }
+
+      "must go from DateOfBirthPage page to CheckYourAnswers" in {
+        navigator.nextPage(DateOfBirthPage, mode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
 
       "must go from a page that doesn't exist in the route map to Index" in {
-
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, NormalMode, UserAnswers("id")) mustBe routes.IndexController.onPageLoad
       }
@@ -38,8 +57,28 @@ class NavigatorSpec extends SpecBase {
 
     "in Check mode" - {
 
-      "must go from a page that doesn't exist in the edit route map to CheckYourAnswers" in {
+      val mode = CheckMode
+      "must go from Name page to DateOfBirthYesNoPage" in {
+        navigator.nextPage(NamePage, mode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
 
+      "must go from DateOfBirthYesNoPage with an answer of true page to DateOfBirth" - {
+        "to DateOfBirth if we answered true" in {
+          val userAnswers = UserAnswers("id").set(DateOfBirthYesNoPage, true).get
+          navigator.nextPage(DateOfBirthYesNoPage, mode, userAnswers) mustBe routes.DateOfBirthController.onPageLoad(mode)
+        }
+
+        "to CheckYourAnswersPage if we answered false" in {
+          val userAnswers = UserAnswers("id").set(DateOfBirthYesNoPage, false).get
+          navigator.nextPage(DateOfBirthYesNoPage, mode, userAnswers) mustBe routes.CheckYourAnswersController.onPageLoad
+        }
+      }
+
+      "must go from DateOfBirthPage page to CheckYourAnswers" in {
+        navigator.nextPage(DateOfBirthPage, mode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
+
+      "must go from a page that doesn't exist in the edit route map to CheckYourAnswers" in {
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, CheckMode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
       }

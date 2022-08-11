@@ -16,4 +16,17 @@
 
 package generators
 
-trait PageGenerators {}
+import org.scalacheck.Arbitrary
+import pages._
+
+trait PageGenerators {
+
+  implicit lazy val arbitraryDateOfBirthYesNoPage: Arbitrary[DateOfBirthYesNoPage.type] =
+    Arbitrary(DateOfBirthYesNoPage)
+
+  implicit lazy val arbitraryDateOfBirthPage: Arbitrary[DateOfBirthPage.type] =
+    Arbitrary(DateOfBirthPage)
+
+  implicit lazy val arbitraryNamePage: Arbitrary[NamePage.type] =
+    Arbitrary(NamePage)
+}

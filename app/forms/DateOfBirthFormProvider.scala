@@ -1,4 +1,4 @@
-@*
+/*
  * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,25 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *@
+ */
 
-@this(
-    layout: templates.Layout
-)
+package forms
 
-@()(implicit request: Request[_], messages: Messages)
+import java.time.LocalDate
 
-@layout(
-    pageTitle    = titleNoForm(messages("index.title")),
-    showBackLink = false
-) {
+import forms.mappings.Mappings
+import javax.inject.Inject
+import play.api.data.Form
 
-    <h1 class="govuk-heading-xl">@messages("index.heading")</h1>
+class DateOfBirthFormProvider @Inject() extends Mappings {
 
-    <p class="govuk-body">@messages("index.guidance")</p>
-
-    <p class="govuk-body">@messages("index.linkText")
-        <a href="@routes.NameController.onPageLoad(NormalMode)" class="govuk-link" id="name">@messages("index.linkName")</a>.
-    </p>
-
+  def apply(): Form[LocalDate] =
+    Form(
+      "value" -> localDate(
+        invalidKey = "dateOfBirth.error.invalid",
+        allRequiredKey = "dateOfBirth.error.required.all",
+        twoRequiredKey = "dateOfBirth.error.required.two",
+        requiredKey = "dateOfBirth.error.required"
+      )
+    )
 }

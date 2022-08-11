@@ -60,7 +60,7 @@ Move into the new directory
 <pre>sbt run</pre>
 should start this project on port 10125. (set in the config of the project)
 You can view the contents by going to
-http://localhost:10125/hmrc-example
+<pre>http://localhost:10125/hmrc-example</pre>
 
 
 ###RoboMongo
