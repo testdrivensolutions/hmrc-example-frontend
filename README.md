@@ -3,12 +3,12 @@
 
 Service manager port: 10125
 
-###Install Homebrew
+### Install Homebrew
 Open Terminal
 <pre>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</pre>
 This will then tell you to run a couple of commands to add brew to your path
 
-###Install GIT
+### Install GIT
 check to see if you already have git installed using
 <pre>git —version</pre>
 If you don’t have it install it using
@@ -16,7 +16,7 @@ If you don’t have it install it using
 else
 <pre>brew upgrade git</pre>
 
-###Install SBT
+### Install SBT
 check to see if you already have sbt installed using
 <pre>sbt —version</pre>
 If you don’t have it install it using
@@ -24,7 +24,7 @@ If you don’t have it install it using
 else
 <pre>brew upgrade sbt</pre>
 
-###Update Bash_profile
+### Update Bash_profile
 Create a workspace folder under your User. i.e. Dev then HMRC under that
 Open Terminal
 <pre>vi ~/.bash_profile</pre>
@@ -36,7 +36,7 @@ To test that the export worked
 <pre>source ~/.bash_profile</pre>
 <pre>cd $WORKSPACE</pre>
 
-###Install MongoDB
+### Install MongoDB
 <pre>xcode-select —install</pre>
 This will probably fail as you should already have it
 <pre>brew tap mongodb/brew</pre>
@@ -49,12 +49,12 @@ so instead I ran
 <pre>brew services start mongodb-community@4.0</pre>
 This is the wrong version for HMRC but seems to work for this
 
-###Download the Code
+### Download the Code
 Navigate in the terminal to your working directory i.e. Dev/HMRC
 First setup your SSH Key then download the project using
 <pre>git clone git@github.com:testdrivensolutions/hmrc-example-frontend.git</pre>
 
-###Compile and run the code
+### Compile and run the code
 Move into the new directory
 <pre>sbt clean compile test</pre>
 <pre>sbt run</pre>
@@ -63,14 +63,14 @@ You can view the contents by going to
 <pre>http://localhost:10125/hmrc-example</pre>
 
 
-###RoboMongo
+### RoboMongo
 If you want to view the contents of the Mongo database then you can install something like robomongo
 The url for the mongodb instance is the default of localhost:27017
 If the sbt tests ran successfully you should see some tables have been created
 If you have successfully run through the pages of the app you should see the data in the relevant table
 
 
-###Run Scaffold
+### Run Scaffold
 giter8 can be used to create some pages. To do that first navigate to the project directory in the terminal and enter
 <pre>sbt</pre>
 <pre>g8Scaffold yesNoPage</pre>
