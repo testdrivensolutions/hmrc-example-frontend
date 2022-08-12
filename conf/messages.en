@@ -78,6 +78,6 @@ dateOfBirth.change.hidden = date of birth
 
 dateOfBirthYesNo.title = Do you know the employees date of birth
 dateOfBirthYesNo.heading = Do you know the employees date of birth
-dateOfBirthYesNo.checkYourAnswersLabel = Employees date of birth
+dateOfBirthYesNo.checkYourAnswersLabel = Employees date of birth is known
 dateOfBirthYesNo.error.required = Select yes if you know the employees date of birth
 dateOfBirthYesNo.change.hidden = employees date of birth is known
